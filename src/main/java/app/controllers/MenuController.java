@@ -1,4 +1,4 @@
-package by.stas.best.practise;
+package app.controllers;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -6,14 +6,15 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-public class SimpleService {
+public class MenuController {
 
-    @RequestMapping(method = RequestMethod.GET, value = "/hello")
+    @RequestMapping(
+            method = {RequestMethod.GET},
+            value = {"/menu"}
+    )
     public ModelAndView serviceProcess(ModelAndView model) {
-        System.out.println("I am here at service process");
-        model.setViewName("index");
-        model.addObject("message", "WE MADE BABY_2!!!");
+        model.setViewName("menu");
+        model.addObject("message", "This is an additional page!");
         return model;
     }
-
 }
