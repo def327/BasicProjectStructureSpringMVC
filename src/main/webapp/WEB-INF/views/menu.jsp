@@ -4,7 +4,7 @@
     <title>Title</title>
 </head>
 <body>
-<h1>This is a menu page for a simple web application</h1>
+<h1>Password recovery</h1>
 ${message}
 </body>
 </html>

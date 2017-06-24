@@ -12,9 +12,8 @@ public class MainController {
             method = {RequestMethod.GET},
             value = {"/main"}
     )
-    public ModelAndView serviceProcess(ModelAndView model) {
+    public ModelAndView showLoginPage(ModelAndView model) {
         model.setViewName("main");
-        model.addObject("message", "This is a main page for web application");
         return model;
     }
 }

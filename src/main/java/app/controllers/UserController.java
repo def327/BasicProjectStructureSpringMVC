@@ -6,15 +6,15 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-public class MenuController {
+public class UserController {
 
     @RequestMapping(
             method = {RequestMethod.GET},
-            value = {"/menu"}
+            value = {"/password/restore"}
     )
-    public ModelAndView serviceProcess(ModelAndView model) {
+    public ModelAndView showPasswordRecoveryPage(ModelAndView model) {
         model.setViewName("menu");
-        model.addObject("message", "This is an additional page!");
+        model.addObject("message", "This page is used for password recovery");
         return model;
     }
 }
