@@ -1,27 +1,39 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <html>
 <head>
     <title>Main page</title>
     <link href="<c:url value="/resources/reset.css"/>" rel="stylesheet">
     <link href="<c:url value="/resources/structure.css"/>" rel="stylesheet">
-
 </head>
 <body>
 
-<form class="box login">
+<form:form method="POST" modelAttribute="user" action="/check-user" class="box login">
+
     <fieldset class="boxBody">
-        <label>Username</label>
-        <input type="text" tabindex="1" placeholder="Enter Username" required>
-        <label><a href="/password/restore" class="rLink" tabindex="5">Forget your password?</a>Password</label>
-        <input type="password" tabindex="2" placeholder="Enter Password" required>
+
+        <form:label path="login">Username:</form:label>
+        <form:input path="login" type="text" tabindex="1" required="required"/>
+
+        <form:label path="password">Password:</form:label>
+        <form:password path="password" required="required"/>
+
     </fieldset>
     <footer>
-        <label><input type="checkbox" tabindex="3">Keep me logged in</label>
-        <input type="submit" class="btnLogin" value="Login" tabindex="4">
+
+        <form:label path="keepLoggedIn">Keep me logged in</form:label>
+        <form:checkbox path="keepLoggedIn" tabindex="3"/>
+
+        <input type="submit" class="btnLogin" tabindex="4"/>
+
     </footer>
-</form>
+
+</form:form>
 
 
 </body>
 </html>
+
+
