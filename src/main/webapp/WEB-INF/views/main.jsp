@@ -16,10 +16,11 @@
 
         <form:label path="login">Username:</form:label>
         <form:input path="login" type="text" tabindex="1" required="required"/>
+        <form:errors path="login" cssClass="errorClass"/>
 
         <form:label path="password">Password:</form:label>
         <form:password path="password" required="required"/>
-
+        <form:errors path="password" cssClass="errorClass"/>
     </fieldset>
     <footer>
 
@@ -31,8 +32,6 @@
     </footer>
 
 </form:form>
-
-
 </body>
 </html>
 

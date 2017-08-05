@@ -3,4 +3,11 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
+
+    <bean id="complexUser" abstract="true">
+        <property name="login" value="Bar"/>
+        <property name="password" value="Foo"/>
+        <property name="keepLoggedIn" value="false"/>
+    </bean>
+    <bean id="complexUser2" class="com.tutorial.entities.User" parent="complexUser"/>
 </beans>
