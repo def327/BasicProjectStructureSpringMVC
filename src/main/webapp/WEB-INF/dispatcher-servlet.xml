@@ -19,5 +19,4 @@
         <!--Allow to use beans from app context in jsp-->
         <property name="exposeContextBeansAsAttributes" value="true"/>
     </bean>
-
 </beans>

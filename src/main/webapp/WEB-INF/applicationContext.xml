@@ -10,4 +10,17 @@
         <property name="keepLoggedIn" value="false"/>
     </bean>
     <bean id="complexUser2" class="com.tutorial.entities.User" parent="complexUser"/>
+
+
+    <bean id="user1" class="com.tutorial.entities.User">
+        <property name="login" value="Stas"/>
+        <property name="password" value="1234S@"/>
+        <property name="keepLoggedIn" value="false"/>
+    </bean>
+
+    <bean id="user2" class="com.tutorial.entities.User">
+        <property name="login" value="Stas"/>
+        <property name="password" value="1234S@"/>
+        <property name="keepLoggedIn" value="false"/>
+    </bean>
 </beans>
