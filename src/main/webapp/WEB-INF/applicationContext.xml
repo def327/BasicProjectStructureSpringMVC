@@ -8,26 +8,26 @@
     <context:annotation-config/>
 
 
-    <utils:list id="userInitDBMock" list-class="java.util.ArrayList" value-type="com.tutorial.entities.User">
-        <bean class="com.tutorial.entities.User">
+    <utils:list id="userInitDBMock" list-class="java.util.ArrayList" value-type="com.tutorial.entities.user.User">
+        <bean class="com.tutorial.entities.user.User">
             <property name="userId" value="#{idGenerator.getUniqueUserID()}"/>
             <property name="login" value="Stas"/>
             <property name="password" value="1234Stas95"/>
             <property name="keepLoggedIn" value="false"/>
         </bean>
-        <bean class="com.tutorial.entities.User">
+        <bean class="com.tutorial.entities.user.User">
             <property name="userId" value="#{idGenerator.getUniqueUserID()}"/>
             <property name="login" value="Dima"/>
             <property name="password" value="dimz95"/>
             <property name="keepLoggedIn" value="true"/>
         </bean>
-        <bean class="com.tutorial.entities.User">
+        <bean class="com.tutorial.entities.user.User">
             <property name="userId" value="#{idGenerator.getUniqueUserID()}"/>
             <property name="login" value="LizaEr"/>
             <property name="password" value="liza96x"/>
             <property name="keepLoggedIn" value="true"/>
         </bean>
-        <bean class="com.tutorial.entities.User">
+        <bean class="com.tutorial.entities.user.User">
             <property name="userId" value="#{idGenerator.getUniqueUserID()}"/>
             <property name="login" value="Tema96"/>
             <property name="password" value="artVx"/>

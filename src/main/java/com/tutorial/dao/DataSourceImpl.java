@@ -1,6 +1,7 @@
 package com.tutorial.dao;
 
-import com.tutorial.entities.User;
+import com.tutorial.entities.user.User;
+import lombok.Setter;
 import org.springframework.stereotype.Repository;
 
 import javax.annotation.Resource;
@@ -10,6 +11,7 @@ import java.util.List;
 @Repository
 public class DataSourceImpl implements DataSource {
 
+    @Setter
     @Resource(name = "userInitDBMock")
     private List<User> users;
 
@@ -25,10 +27,7 @@ public class DataSourceImpl implements DataSource {
 
     @Override
     public User getUserById(BigInteger userIdToFind) {
-        return users.stream().filter(user -> user.getUserId().equals(userIdToFind)).findFirst().orElseGet(null);
-    }
-
-    public void setUsers(List<User> users) {
-        this.users = users;
+        User user = users.stream().filter(o -> o.getUserId().equals(userIdToFind)).findFirst().get();
+        return user;
     }
 }

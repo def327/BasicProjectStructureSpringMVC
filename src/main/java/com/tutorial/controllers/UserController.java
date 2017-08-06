@@ -1,7 +1,10 @@
 package com.tutorial.controllers;
 
 import com.tutorial.dao.DataSource;
-import com.tutorial.entities.User;
+import com.tutorial.entities.user.User;
+import com.tutorial.entities.user.UserListJAXB;
+import com.tutorial.utils.UsersListJAXBCreator;
+import lombok.Setter;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.http.HttpStatus;
@@ -22,6 +25,7 @@ public class UserController {
 
     private static final Logger LOGGER = LogManager.getLogger(UserController.class);
 
+    @Setter
     @Inject
     private DataSource dataSource;
 
@@ -52,19 +56,32 @@ public class UserController {
 
 
     //REST-ful WEB-SERVICES
-
-    @RequestMapping(value = "/user/{id}", method = RequestMethod.GET, produces = "application/json")
+    @RequestMapping(value = "json/user/{id}", method = RequestMethod.GET, produces = "application/json")
     @ResponseBody
-    public User getUser(@PathVariable("id") BigInteger userId) {
-        LOGGER.debug("GET : /user/{}", userId);
+    public User getJsonUser(@PathVariable("id") BigInteger userId) {
+        LOGGER.debug("GET : json/user/{}", userId);
         return dataSource.getUserById(userId);
     }
 
-    @RequestMapping(value = "/users", method = RequestMethod.GET, produces = "application/json")
+    @RequestMapping(value = "json/users", method = RequestMethod.GET, produces = "application/json")
     @ResponseBody
-    public List<User> getUsers() {
-        LOGGER.debug("GET : /users");
+    public List<User> getJsonUsers() {
+        LOGGER.debug("GET : json/users");
         return dataSource.getUsers();
+    }
+
+    @RequestMapping(value = "xml/user/{id}", method = RequestMethod.GET, produces = "application/xml")
+    @ResponseBody
+    public User getXmlUser(@PathVariable("id") BigInteger userId) {
+        LOGGER.debug("GET : xml/user/{}", userId);
+        return dataSource.getUserById(userId);
+    }
+
+    @RequestMapping(value = "xml/users", method = RequestMethod.GET, produces = "application/xml")
+    @ResponseBody
+    public UserListJAXB getXmlUsers() {
+        LOGGER.debug("GET : xml/users");
+        return UsersListJAXBCreator.createUserList(dataSource.getUsers());
     }
 
     @RequestMapping(value = "/user", method = RequestMethod.POST, consumes = "application/json")
@@ -72,9 +89,5 @@ public class UserController {
         LOGGER.debug("POST : /user");
         dataSource.addUser(user);
         return ResponseEntity.status(HttpStatus.CREATED).build();
-    }
-
-    public void setDataSource(DataSource dataSource) {
-        this.dataSource = dataSource;
     }
 }
