@@ -1,26 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:utils="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
 
 
-    <bean id="complexUser" abstract="true">
-        <property name="login" value="Bar"/>
-        <property name="password" value="Foo"/>
-        <property name="keepLoggedIn" value="false"/>
-    </bean>
-    <bean id="complexUser2" class="com.tutorial.entities.User" parent="complexUser"/>
-
-
-    <bean id="user1" class="com.tutorial.entities.User">
+    <bean id="1" class="com.tutorial.entities.User">
+        <property name="userId" value="123"/>
         <property name="login" value="Stas"/>
-        <property name="password" value="1234S@"/>
+        <property name="password" value="1234Stas95"/>
+        <property name="keepLoggedIn" value="false"/>
+    </bean>
+    <bean id="2" class="com.tutorial.entities.User">
+        <property name="userId" value="121"/>
+        <property name="login" value="Dima"/>
+        <property name="password" value="dimz95"/>
+        <property name="keepLoggedIn" value="true"/>
+    </bean>
+    <bean id="3" class="com.tutorial.entities.User">
+        <property name="userId" value="4343"/>
+        <property name="login" value="LizaEr"/>
+        <property name="password" value="liza96x"/>
+        <property name="keepLoggedIn" value="true"/>
+    </bean>
+    <bean id="4" class="com.tutorial.entities.User">
+        <property name="userId" value="1295"/>
+        <property name="login" value="Tema96"/>
+        <property name="password" value="artVx"/>
         <property name="keepLoggedIn" value="false"/>
     </bean>
 
-    <bean id="user2" class="com.tutorial.entities.User">
-        <property name="login" value="Stas"/>
-        <property name="password" value="1234S@"/>
-        <property name="keepLoggedIn" value="false"/>
-    </bean>
+    <utils:list id="userInitDBMock" list-class="java.util.ArrayList" value-type="com.tutorial.entities.User">
+        <ref bean="1"/>
+        <ref bean="2"/>
+        <ref bean="3"/>
+        <ref bean="4"/>
+    </utils:list>
+
 </beans>
