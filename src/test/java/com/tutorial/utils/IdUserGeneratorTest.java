@@ -1,5 +1,7 @@
 package com.tutorial.utils;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -18,13 +20,15 @@ import javax.inject.Inject;
 })
 public class IdUserGeneratorTest {
 
+    private static final Logger LOGGER = LogManager.getLogger(IdUserGenerator.class);
+
     @Inject
     @Qualifier(value = "idGenerator")
     private IdUserGenerator idGenerator;
 
     @Test
     public void getUniqueUserID() throws Exception {
-        System.out.println("GENERATE ID : " + idGenerator.getUniqueUserID());
+        LOGGER.debug("GENERATE ID : " + idGenerator.getUniqueUserID());
     }
 
 }
