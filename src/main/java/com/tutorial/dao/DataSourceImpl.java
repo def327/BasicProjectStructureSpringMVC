@@ -27,7 +27,11 @@ public class DataSourceImpl implements DataSource {
 
     @Override
     public User getUserById(BigInteger userIdToFind) {
-        User user = users.stream().filter(o -> o.getUserId().equals(userIdToFind)).findFirst().get();
-        return user;
+        try {
+            User user = users.stream().filter(o -> o.getUserId().equals(userIdToFind)).findFirst().get();
+            return user;
+        } catch (Exception e) {
+            return null;
+        }
     }
 }
