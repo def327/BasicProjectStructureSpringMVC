@@ -27,7 +27,7 @@ public class IdUserGeneratorTest {
     private IdUserGenerator idGenerator;
 
     @Test
-    public void getUniqueUserID() throws Exception {
+    public void testGetUniqueUserID() throws Exception {
         LOGGER.debug("GENERATE ID : " + idGenerator.getUniqueUserID());
     }
 
