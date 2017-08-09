@@ -1,7 +1,9 @@
 package com.tutorial.utils;
 
+import com.tutorial.entities.user.User;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.aspectj.lang.ProceedingJoinPoint;
 import org.springframework.stereotype.Service;
 
 import java.math.BigInteger;
@@ -16,6 +18,7 @@ public class IdUserGenerator {
     public static final int ZERO_VALUE = 0;
 
     private static final Logger LOGGER = LogManager.getLogger(IdUserGenerator.class);
+    public static final int USER_ARG = 0;
 
     public BigInteger getUniqueUserID() {
         long val = RANDOM_START_VALUE;
@@ -32,4 +35,15 @@ public class IdUserGenerator {
         LOGGER.debug("GENERATE Unique User ID = " + uniqueId);
         return uniqueId;
     }
+
+    public Object fillUniqueId(ProceedingJoinPoint joinPoint) throws Throwable {
+        Object[] args = joinPoint.getArgs();
+        User user = (User) args[USER_ARG];
+        BigInteger uniqueId = getUniqueUserID();
+        user.setUserId(uniqueId);
+        LOGGER.debug("Generate id = {} for user with login : {}", uniqueId, user.getLogin());
+        Object output = joinPoint.proceed();
+        return output;
+    }
+
 }

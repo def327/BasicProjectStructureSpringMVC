@@ -20,7 +20,7 @@ import javax.validation.Valid;
 import java.math.BigInteger;
 import java.util.List;
 
-@Controller
+@Controller("userController")
 public class UserController {
 
     private static final Logger LOGGER = LogManager.getLogger(UserController.class);

@@ -65,6 +65,18 @@
             <version>1</version>
         </dependency>
 
+        <!--Dependency for Spring AOP-->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-aop</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.aspectj</groupId>
+            <artifactId>aspectjweaver</artifactId>
+            <version>1.8.10</version>
+        </dependency>
+
 
         <!-- Dependency for JUnit Spring Testing-->
         <dependency>
